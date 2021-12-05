@@ -3,7 +3,6 @@ package pl.sda.springproject2;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import pl.sda.springproject2.entity.AppUser;
 import pl.sda.springproject2.entity.Article;
 import pl.sda.springproject2.entity.Author;
 import pl.sda.springproject2.entity.EntityBook;
@@ -18,14 +17,14 @@ public class SpringProject2Application implements CommandLineRunner {
     final BookRepository bookRepository;
     final ArticleRepository articleRepository;
     final AuthorRepository authorRepository;
-    final AppUserRepository appUserRepository;
+   // final AppUserRepository appUserRepository;
 
-    public SpringProject2Application(TodoRepository todoRepository, BookRepository bookRepository, ArticleRepository articleRepository, AuthorRepository authorRepository, AppUserRepository appUserRepository) {
+    public SpringProject2Application(TodoRepository todoRepository, BookRepository bookRepository, ArticleRepository articleRepository, AuthorRepository authorRepository  ) {
         this.todoRepository = todoRepository;
         this.bookRepository = bookRepository;
         this.articleRepository = articleRepository;
         this.authorRepository = authorRepository;
-        this.appUserRepository = appUserRepository;
+    //    this.appUserRepository = appUserRepository;
     }
 
     public static void main(String[] args) {
@@ -121,19 +120,41 @@ public class SpringProject2Application implements CommandLineRunner {
         System.out.println(articleRepository.findAll());
         System.out.println(authorRepository.findAll().get(0).getArticles());
 
-        appUserRepository.save(AppUser.builder()
-                .email("ktos")
-                .password("$2a$12$MYsEWcUIOTsh./T3jAJuWuS9PF0UT4vWiRAxuT/2HL7a8Ev8D8oF2")
-                .enable(true)
-                .role("ROLE_USER") // trzeba dodac przedrostek ROLE
-                .build());
-
-        appUserRepository.save(AppUser.builder()
-                .email("admin@wp.pl")
-                .password("$2a$12$MRp8l5ORCx.i7uPzErt3I.Lmn3eLgbzTAClonywaa/I1QVRxvr7K2")// admin
-                .enable(true)
-                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-                .build());
+//        appUserRepository.save(AppUser.builder()
+//                .email("matpap21@wp.pl")
+//                .password("$2a$12$MYsEWcUIOTsh./T3jAJuWuS9PF0UT4vWiRAxuT/2HL7a8Ev8D8oF2") // https://bcrypt-generator.com/
+//                .enable(true)
+//                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+//                //.firstName("Karol")
+//               // .lastName("Nowak")
+//                .build());
+//
+//        appUserRepository.save(AppUser.builder()
+//                .email("admin@wp.pl")
+//                .password("$2a$12$MRp8l5ORCx.i7uPzErt3I.Lmn3eLgbzTAClonywaa/I1QVRxvr7K2")// admin https://bcrypt-generator.com/
+//                .enable(true)
+//                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+//               // .firstName("Kylo")
+//               // .lastName("Ren")
+//                .build());
+//
+//        appUserRepository.save(AppUser.builder()
+//                .email("ktos")
+//                .password("$2a$12$kutPXb.B9hkMZCT330qRsuwKOUJz9dNdqvD6ZqHRMx4UXLbj2iyOK")// ktos https://bcrypt-generator.com/
+//                .enable(true)
+//                .role("ROLE_USER") // trzeba dodac przedrostek ROLE
+//               // .firstName("NONAME")
+//               // .lastName("NONAME")
+//                .build());
+//
+//        appUserRepository.save(AppUser.builder()
+//                .email("user")
+//                .password("$2a$12$iLt/QcRKgvFpnZXvW63l5O9FDnVTk/OedS4BM3pcw59IiPa/VCYbW")// ktos https://bcrypt-generator.com/
+//                .enable(true)
+//                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+//               // .firstName("Mrokos")
+//               // .lastName("Darkness")
+//                .build());
 
     }
 }

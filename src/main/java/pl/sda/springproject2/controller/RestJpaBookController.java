@@ -7,25 +7,26 @@ import pl.sda.springproject2.dto.NewBookDto;
 import pl.sda.springproject2.model.Book;
 import pl.sda.springproject2.service.BookService;
 
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/books")
-public class RestJPABookController {
+public class RestJpaBookController {
     private final BookService bookService;
 
-    public RestJPABookController(BookService bookService) {
+    public RestJpaBookController(BookService bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping("")
-    public List<Book> getBook() {
+    public List<Book> getBooks(){
         return bookService.findAll();
     }
 
     @PostMapping("")
-    public ResponseEntity<Book> addBoook(@RequestBody NewBookDto bookDto) {
-      return ResponseEntity.status(HttpStatus.CREATED).body(bookService.save(bookDto));
-
+    public ResponseEntity<Book> addBook(@RequestBody NewBookDto dto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookService.save(dto));
     }
+
 }

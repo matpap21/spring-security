@@ -10,11 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration
+//@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // ponizej autoryzacja na podstawie sesji bez .httpBasic()
+        // ponizej autoryzacja na podstawie sesji bez .httpBasic(), stosowane w aplikacjach mvc , czyli tych, które zwracają strony
+        // kazde ciastko ma okreslony czas zycia tzw "max age" ?
         // spring raz wyswietla nam formularz, nie korzysta z naglowka autorization tylko formularz przesyla nam dane do atoryzacji
         // spring na serwerze tworzy nam sesje, zapamietuje uzytkownika i kazdy nastepny request ze strony formularza musi zawierac sesion id
         http

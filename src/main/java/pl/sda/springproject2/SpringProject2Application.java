@@ -3,6 +3,7 @@ package pl.sda.springproject2;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import pl.sda.springproject2.entity.AppUser;
 import pl.sda.springproject2.entity.Article;
 import pl.sda.springproject2.entity.Author;
 import pl.sda.springproject2.entity.EntityBook;
@@ -17,14 +18,14 @@ public class SpringProject2Application implements CommandLineRunner {
     final BookRepository bookRepository;
     final ArticleRepository articleRepository;
     final AuthorRepository authorRepository;
-   // final AppUserRepository appUserRepository;
+   final AppUserRepository appUserRepository; // ********** jesli uzywasz SecurityConfig to trzeba to zablokowac
 
-    public SpringProject2Application(TodoRepository todoRepository, BookRepository bookRepository, ArticleRepository articleRepository, AuthorRepository authorRepository  ) {
+    public SpringProject2Application(TodoRepository todoRepository, BookRepository bookRepository, ArticleRepository articleRepository, AuthorRepository authorRepository, AppUserRepository appUserRepository) {
         this.todoRepository = todoRepository;
         this.bookRepository = bookRepository;
         this.articleRepository = articleRepository;
         this.authorRepository = authorRepository;
-    //    this.appUserRepository = appUserRepository;
+        this.appUserRepository = appUserRepository; // ********** jesli uzywasz SecurityConfig to trzeba to zablokowac
     }
 
     public static void main(String[] args) {
@@ -120,41 +121,50 @@ public class SpringProject2Application implements CommandLineRunner {
         System.out.println(articleRepository.findAll());
         System.out.println(authorRepository.findAll().get(0).getArticles());
 
-//        appUserRepository.save(AppUser.builder()
-//                .email("matpap21@wp.pl")
-//                .password("$2a$12$MYsEWcUIOTsh./T3jAJuWuS9PF0UT4vWiRAxuT/2HL7a8Ev8D8oF2") // https://bcrypt-generator.com/
-//                .enable(true)
-//                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-//                //.firstName("Karol")
-//               // .lastName("Nowak")
-//                .build());
-//
-//        appUserRepository.save(AppUser.builder()
-//                .email("admin@wp.pl")
-//                .password("$2a$12$MRp8l5ORCx.i7uPzErt3I.Lmn3eLgbzTAClonywaa/I1QVRxvr7K2")// admin https://bcrypt-generator.com/
-//                .enable(true)
-//                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-//               // .firstName("Kylo")
-//               // .lastName("Ren")
-//                .build());
-//
-//        appUserRepository.save(AppUser.builder()
-//                .email("ktos")
-//                .password("$2a$12$kutPXb.B9hkMZCT330qRsuwKOUJz9dNdqvD6ZqHRMx4UXLbj2iyOK")// ktos https://bcrypt-generator.com/
-//                .enable(true)
-//                .role("ROLE_USER") // trzeba dodac przedrostek ROLE
-//               // .firstName("NONAME")
-//               // .lastName("NONAME")
-//                .build());
-//
-//        appUserRepository.save(AppUser.builder()
-//                .email("user")
-//                .password("$2a$12$iLt/QcRKgvFpnZXvW63l5O9FDnVTk/OedS4BM3pcw59IiPa/VCYbW")// ktos https://bcrypt-generator.com/
-//                .enable(true)
-//                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-//               // .firstName("Mrokos")
-//               // .lastName("Darkness")
-//                .build());
 
+        // ***********************************************************************************************//
+        // ********** jesli uzywasz SecurityConfig to trzeba ten blok zablokowac
+        // ponizszy blok dotyczy SecureConfig2
+
+        appUserRepository.
+                save(AppUser.builder()
+                .email("matpap21@wp.pl")
+                .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK") // https://bcrypt-generator.com/
+                .enable(true)
+                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+                //.firstName("Karol")
+               // .lastName("Nowak")
+                .build());
+
+        appUserRepository.save(AppUser.builder()
+                .email("admin@wp.pl")
+                .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK")// admin https://bcrypt-generator.com/
+                .enable(true)
+                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+               // .firstName("Kylo")
+               // .lastName("Ren")
+                .build());
+
+        appUserRepository.save(AppUser.builder()
+                .email("ktos")
+                .password("$2a$12$3pgQeMFQpamAISHdX.jxWeoA5VHJ23hjuATUOKcdqk.r69nR7rv06")// ktos https://bcrypt-generator.com/
+                .enable(true)
+                .role("ROLE_USER") // trzeba dodac przedrostek ROLE
+               // .firstName("NONAME")
+               // .lastName("NONAME")
+                .build());
+
+        appUserRepository.save(AppUser.builder()
+                .email("user")
+                .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK")// ktos https://bcrypt-generator.com/
+                .enable(true)
+                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+               // .firstName("Mrokos")
+               // .lastName("Darkness")
+                .build());
+
+        // ***********************************************************************************************//
+        // ********** jesli uzywasz SecurityConfig to trzeba ten blok zablokowac
+        // powyzszy blok dotyczy SecureConfig2
     }
 }

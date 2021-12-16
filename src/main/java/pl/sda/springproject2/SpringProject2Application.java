@@ -18,7 +18,7 @@ public class SpringProject2Application implements CommandLineRunner {
     final BookRepository bookRepository;
     final ArticleRepository articleRepository;
     final AuthorRepository authorRepository;
-   final AppUserRepository appUserRepository; // ********** jesli uzywasz SecurityConfig to trzeba to zablokowac
+    final AppUserRepository appUserRepository; // ********** jesli uzywasz SecurityConfig to trzeba to zablokowac
 
     public SpringProject2Application(TodoRepository todoRepository, BookRepository bookRepository, ArticleRepository articleRepository, AuthorRepository authorRepository, AppUserRepository appUserRepository) {
         this.todoRepository = todoRepository;
@@ -128,39 +128,40 @@ public class SpringProject2Application implements CommandLineRunner {
 
         appUserRepository.
                 save(AppUser.builder()
-                .email("matpap21@wp.pl")
-                .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK") // https://bcrypt-generator.com/
-                .enable(true)
-                .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-                //.firstName("Karol")
-               // .lastName("Nowak")
-                .build());
+                        .email("matpap21@wp.pl")
+                        .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK") // https://bcrypt-generator.com/
+                        .enable(true)
+                        .firstName("Mrokos")
+                        .lastName("Mrokos")
+                        .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
+                        .lastName("Nowak")
+                        .build());
 
         appUserRepository.save(AppUser.builder()
                 .email("admin@wp.pl")
                 .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK")// admin https://bcrypt-generator.com/
                 .enable(true)
+                .firstName("ADMIN")
+                .lastName("ADMIN")
                 .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-               // .firstName("Kylo")
-               // .lastName("Ren")
                 .build());
 
         appUserRepository.save(AppUser.builder()
                 .email("ktos")
                 .password("$2a$12$3pgQeMFQpamAISHdX.jxWeoA5VHJ23hjuATUOKcdqk.r69nR7rv06")// ktos https://bcrypt-generator.com/
                 .enable(true)
+                .firstName("KTOS")
+                .lastName("KTOS")
                 .role("ROLE_USER") // trzeba dodac przedrostek ROLE
-               // .firstName("NONAME")
-               // .lastName("NONAME")
                 .build());
 
         appUserRepository.save(AppUser.builder()
                 .email("user")
                 .password("$2a$12$9njK38D7aJZ.lrtXcVTna.QOs0t1f69HfP4tGqqK8leCjyLCtlKwK")// ktos https://bcrypt-generator.com/
                 .enable(true)
+                .firstName("ADMIN")
+                .lastName("ADMIN")
                 .role("ROLE_ADMIN") // trzeba dodac przedrostek ROLE
-               // .firstName("Mrokos")
-               // .lastName("Darkness")
                 .build());
 
         // ***********************************************************************************************//

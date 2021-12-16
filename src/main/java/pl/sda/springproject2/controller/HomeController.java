@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.sda.springproject2.entity.AppUser;
 import pl.sda.springproject2.model.ToDo;
 import pl.sda.springproject2.service.ToDoService;
 
@@ -23,8 +24,15 @@ public class HomeController {
         return "index";
     }
 
+//    @GetMapping("/todo/add")
+//    public String toDoAddForm() {
+//        return "todo-add-form";
+//    }
+
+    // SecurityConfig3
     @GetMapping("/todo/add")
-    public String toDoAddForm() {
+    public String toDoAddForm(@AuthenticationPrincipal AppUser user, Model model) { // Model przekazuje dane do widoku
+        model.addAttribute("principal", user); // spring przekaze nam dane uzytkownika zalogowanego (dostep do uzytkownika w contenerze)
         return "todo-add-form";
     }
 
